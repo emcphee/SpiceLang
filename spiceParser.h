@@ -29,6 +29,7 @@ private:
     spiceASTNode* parse_int_var_definition();
     spiceASTNode* parse_expression();
     spiceASTNode* parse_variable();
+    spiceASTNode* parse_function_call();
 };
 
 

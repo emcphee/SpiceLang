@@ -156,3 +156,21 @@ spiceASTNode* spiceParser::parse_variable(){
         return ast_var;
     }
 }
+
+spiceASTNode* spiceParser::parse_function_call(){
+    auto* func_call = new spiceASTNode(AST_FUNC_CALL);
+    func_call->function_call_name = prevToken->value;
+    eat_token(TOKEN_LPAREN);
+
+    spiceASTNode* ast_expr = parse_statement();
+    func_call->function_args.push_back(ast_expr);
+
+    while(curToken->type == TOKEN_COMMA){
+        eat_token(TOKEN_COMMA);
+
+        ast_expr = parse_statement();
+        func_call->function_args.push_back(ast_expr);
+    }
+    eat_token(TOKEN_RPAREN);
+    return func_call;
+}
