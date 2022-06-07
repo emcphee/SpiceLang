@@ -1,0 +1,4 @@
+int i = 9;
+string s = "abc";
+string s2 = "bcd";
+string s3 = "ccc";
